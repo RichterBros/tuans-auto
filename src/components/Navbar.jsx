@@ -35,6 +35,7 @@ const Logo = styled.div`
   font-weight: 1000;
   font-variation-settings: "wdth" 1000, "wght" 1000, "opsz" 48;
   font-style: italic;
+  font-family: "Roboto ", sans-serif;
 `;
 
 const List = styled.ul`

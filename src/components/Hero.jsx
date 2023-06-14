@@ -14,6 +14,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useRef } from "react";
 import Car from "./Car";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Yelp from "./Yelp";
 
 const Section = styled.div`
   height: 100vh;
@@ -29,10 +30,14 @@ const Container = styled.div`
   /* scroll-snap-align: center; */
   width: 1440px;
   display: flex;
-  justify-content: space-between;
-  padding-top: 100px;
+  justify-content: center;
+  /* padding-top: 100px; */
   /* 
   background-color: #00ff5e; */
+  /* border-width: 1px;
+  border-color: white;
+  border-style: solid;
+  border-radius: 5px; */
 `;
 
 const Left = styled.div`
@@ -42,7 +47,7 @@ const Left = styled.div`
   justify-content: center;
   gap: 50px;
   /* background-color: #353c70; */
-  align-self: flex-start;
+  /* align-self: flex-start; */
   padding-top: 100px;
   margin-right: -80px;
 `;
@@ -52,11 +57,10 @@ const Right = styled.div`
 
   flex: 2;
   position: relative;
-  margin-top: -200px;
+  /* margin-top: -200px; */
   /* background-color: #95599b; */
 
   /* align-self: flex-start; */
-  margin-bottom: 50px;
 `;
 
 const Title = styled.h1`
@@ -66,6 +70,7 @@ const Title = styled.h1`
   font-style: italic;
   color: lightgrey;
   padding-bottom: 50px;
+  font-family: "Roboto ", sans-serif;
 `;
 
 const WhatWeDo = styled.div`
@@ -115,11 +120,57 @@ const Button = styled.button`
   background-color: #434343;
   color: white;
   font-weight: 500px;
-  width: 100px;
+  width: 200px;
   padding: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+`;
+const ReviewContainer = styled.div`
+  width: 1440px;
+  display: flex;
+  background-color: #434343;
+  color: white;
+  /* font-family: "Poppins", sans-serif; */
+
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: white;
+  border-style: solid;
+  border-radius: 5px;
+  position: relative;
+  margin-bottom: 25px;
+  gap: 10px;
+`;
+const Review = styled.div`
+  font-weight: 10;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  background-color: #582727;
+  color: white;
+
+  width: 100%;
+
+  padding: 10px;
+  border: none;
+
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: white;
+  border-style: solid;
+  border-radius: 5px;
+  /* &:before {
+    content: " 🦄Reviews:";
+    position: absolute;
+  } */
+`;
+const ReviewTitle = styled.h1`
+  color: white;
+  font-weight: 500px;
 `;
 
 const Img = styled.img`
@@ -202,6 +253,24 @@ const Hero = () => {
           </CarContainer>
         </Right>
       </Container>
+      {/* <ReviewTitle>Reviews:</ReviewTitle> */}
+      <ReviewContainer>
+        <Review>
+          <Yelp />
+        </Review>
+        <Review>
+          "Tuan auto service is the best. They have been working on my cars for
+          years. Simple things to major work they are quick friendly and very
+          reasonable in pricing. I will recommend anyone that needs their car
+          worked on to come here!"
+        </Review>
+        <Review>
+          "Most honest mechanics in Portland. Saved me thousands of dollars by
+          fixing my 1990 subaru and were so kind. Definitely did a great job and
+          I would (and do) recommend them to all my friends. FINALLY a mechanic
+          I can trust."
+        </Review>
+      </ReviewContainer>
     </Section>
   );
 };
