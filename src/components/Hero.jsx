@@ -259,16 +259,16 @@ const Hero = () => {
           <Yelp />
         </Review>
         <Review>
-          "Tuan auto service is the best. They have been working on my cars for
-          years. Simple things to major work they are quick friendly and very
-          reasonable in pricing. I will recommend anyone that needs their car
-          worked on to come here!"
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+          repellendus, commodi eius eos dolores perspiciatis earum nostrum
+          voluptate modi laudantium minus magni voluptas consequatur vel ipsa,
+          consequuntur odio neque est!
         </Review>
         <Review>
-          "Most honest mechanics in Portland. Saved me thousands of dollars by
-          fixing my 1990 subaru and were so kind. Definitely did a great job and
-          I would (and do) recommend them to all my friends. FINALLY a mechanic
-          I can trust."
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi dolor,
+          necessitatibus porro doloremque possimus architecto, harum, at
+          recusandae facere praesentium pariatur repellendus voluptatum non nam
+          iusto quibusdam delectus veniam beatae?
         </Review>
       </ReviewContainer>
     </Section>
