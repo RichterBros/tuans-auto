@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function Yelp() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [data]);
 
   const fetchData = async () => {
     try {
@@ -25,15 +26,15 @@ function Yelp() {
     }
   };
   const reviews = data.reviews;
-  console.log(reviews);
+  // console.log(reviews);
   return (
     <div>
       <h2>API Data:</h2>
-      <ul>
+      {/* <ul>
         {reviews.map((item) => (
           <li>{item.text}</li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 }

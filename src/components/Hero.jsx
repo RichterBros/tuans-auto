@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import Navbar from "./Navbar";
 
@@ -14,8 +14,9 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useRef } from "react";
 import Car from "./Car";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Yelp from "./Yelp";
-
+// import Yelp from "./Yelp";
+import axios from "axios";
+import ReviewsComponent from "./ReviewsComponent";
 const Section = styled.div`
   height: 100vh;
   /* scroll-snap-align: center; */
@@ -129,12 +130,13 @@ const Button = styled.button`
 const ReviewContainer = styled.div`
   width: 1440px;
   display: flex;
+  flex-direction: row;
   background-color: #434343;
   color: white;
   /* font-family: "Poppins", sans-serif; */
 
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -142,32 +144,11 @@ const ReviewContainer = styled.div`
   border-color: white;
   border-style: solid;
   border-radius: 5px;
-  position: relative;
+  /* position: relative; */
   margin-bottom: 25px;
   gap: 10px;
 `;
-const Review = styled.div`
-  font-weight: 10;
-  letter-spacing: 1px;
-  line-height: 1.5;
-  background-color: #582727;
-  color: white;
 
-  width: 100%;
-
-  padding: 10px;
-  border: none;
-
-  border-radius: 5px;
-  border-width: 1px;
-  border-color: white;
-  border-style: solid;
-  border-radius: 5px;
-  /* &:before {
-    content: " 🦄Reviews:";
-    position: absolute;
-  } */
-`;
 const ReviewTitle = styled.h1`
   color: white;
   font-weight: 500px;
@@ -198,6 +179,29 @@ const Hero = () => {
   const targetRef = useRef(null);
   // const carRef = useRef(null);
 
+  const [message, setMessage] = useState("");
+
+  const fetchData = async () => {
+    const results = await axios.get("/.netlify/functions/hello-world");
+    console.log(results);
+
+    setMessage(results);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+  console.log(message);
+
+  // var string = JSON.stringify(message);
+  // const test = message.data.reviews;
+  // console.log(test);
+  // console.log(string);
+  // <ul>
+  //   {message.map((item) => (
+  //     <li>{item.text}</li>
+  //   ))}
+  // </ul>;
+
   // const { scrollYProgress } = useScroll({
   //   target: targetRef,
   //   offset: ["end end", "end start"],
@@ -215,7 +219,16 @@ const Hero = () => {
       <Container>
         <Left>
           {/* <Title as={motion.div} style={{ opacity }} ref={targetRef}> */}
-          <Title>Complete Automotive Service</Title>
+          <Title>
+            Complete Automotive Service
+            {/* {string} */}
+            {/* <ul>
+              {message.map((item) => (
+                <li>{item.text}</li>
+              ))}
+            </ul> */}
+          </Title>
+          {/* <Li>{message}</Li> */}
           <WhatWeDo>
             <Line src="./img/line.png" />
             {/* <Subtitle as={motion.div} whileHover={{ scale: 1.1 }} drag> */}
@@ -255,21 +268,7 @@ const Hero = () => {
       </Container>
       {/* <ReviewTitle>Reviews:</ReviewTitle> */}
       <ReviewContainer>
-        <Review>
-          <Yelp />
-        </Review>
-        <Review>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-          repellendus, commodi eius eos dolores perspiciatis earum nostrum
-          voluptate modi laudantium minus magni voluptas consequatur vel ipsa,
-          consequuntur odio neque est!
-        </Review>
-        <Review>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi dolor,
-          necessitatibus porro doloremque possimus architecto, harum, at
-          recusandae facere praesentium pariatur repellendus voluptatum non nam
-          iusto quibusdam delectus veniam beatae?
-        </Review>
+        <ReviewsComponent />
       </ReviewContainer>
     </Section>
   );
